@@ -21,7 +21,7 @@ class ArticlesController extends AbstractController
     }
 
     /**
-     * @Route("/articles/{$id}")
+     * @Route("/article/{$id}")
      */
     public function showArticle(int $id, ArticleRepository $articleRepository): Response
     {
