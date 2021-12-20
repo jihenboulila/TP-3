@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter article{% endblock %}
+
+{% block body %}
+<a href="/articles" class="btn btn-primary">Retour au articles</a>
+<form>
+  <div class="mb-3">
+    <label for="exampleInputDesignation" class="form-label">Designation</label>
+    <input type="text" class="form-control" id="exampleInputDesignation" aria-describedby="designationHelp">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputDescription" class="form-label">Description</label>
+    <input type="text" class="form-control" id="exampleInputDescription" aria-describedby="descriptionlHelp">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPrix" class="form-label">Prix</label>
+    <input type="text" class="form-control" id="exampleInputPrix">
+  </div>
+  <button type="submit" class="btn btn-primary">Ajouter</button>
+</form>
+{% endblock %}

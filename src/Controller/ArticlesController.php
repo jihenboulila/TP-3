@@ -5,6 +5,8 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Doctrine\ORM\EntityManagerInterface;
+use App\Entity\Article;
 use App\Repository\ArticleRepository;
 
 class ArticlesController extends AbstractController
@@ -21,7 +23,7 @@ class ArticlesController extends AbstractController
     }
 
     /**
-     * @Route("/articles/{$id}")
+     * @Route("/articles/{id}")
      */
     public function showArticle(int $id, ArticleRepository $articleRepository): Response
     {
@@ -29,5 +31,29 @@ class ArticlesController extends AbstractController
         return $this->render('articles/show.html.twig', [
             'article' => $article,
         ]);
+    }
+
+    /**
+     * @Route("/article/add")
+     */
+    public function addArticle(EntityManagerInterface $entityManager): Response
+    {
+        $article = new Article();
+        $article->setDesignation("Article");
+        $article->setDescription("Un Article");
+        $article->setPrix(10);
+        $entityManager->persist($article);
+        $entityManager->flush();
+        return $this->redirectToRoute('articles_route');
+    }
+
+    /**
+     * @Route("/article/delete/{id}")
+     */
+    public function deleteArticle(Article $article,EntityManagerInterface $entityManager): Response
+    {
+        $entityManager->remove($article);
+        $entityManager->flush();
+        return $this->redirectToRoute('articles_route');
     }
 }
