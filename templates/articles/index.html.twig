@@ -8,12 +8,19 @@
 {% if articles %}
 <table id="articles" class="table table-striped">
 <thead>
-<tr><th>Articles</th><th>Actions</th></tr>
+<tr>
+    <th>Articles</th>
+    <th>Designation</th>
+    <th>Prix</th>
+    <th>Actions</th>
+</tr>
 </thead>
 <tbody>
 {% for article in articles %}
     <tr>
-        <td>{{article}}</td>
+        <td>{{article.designation}}</td>
+        <td>{{article.Description}}</td>
+        <td>{{article.prix}} dt</td>
         <td>
             <a href="article/1" class="btn btn-primary">Détails</a>
         </td>
