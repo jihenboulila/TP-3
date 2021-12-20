@@ -56,4 +56,16 @@ class ArticlesController extends AbstractController
         $entityManager->flush();
         return $this->redirectToRoute('articles_route');
     }
+
+    /**
+     * @Route("/article/edit/{id}")
+     */
+    public function editArticle(Article $article,EntityManagerInterface $entityManager): Response
+    {
+        $article->setDesignation("Article Modifiée");
+        $article->setDescription("Article Modifiée");
+        $article->setPrix(15);
+        $entityManager->flush();
+        return $this->redirectToRoute('articles_route');
+    }
 }
